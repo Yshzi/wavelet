@@ -7,6 +7,7 @@ class Handler implements URLHandler {
     ArrayList<Integer> index = new ArrayList<>();
 
     public String handleRequest(URI url) {
+        // Cannot get search to work.
         if (url.getPath().equals("/")) {
             return String.format("Andrew's searches:", strArray.toString());
         } else if (url.getPath().contains("/search")) {
