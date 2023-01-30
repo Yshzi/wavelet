@@ -21,18 +21,16 @@ class Handler implements URLHandler {
                 for (int i = 0; i < index.size(); ++i) {
                     returnList[i] = strArray.get(index.get(i));
                 }
-                return String.format("Search results", returnList.toString());
+                return String.format("Search results:", strArray.toString());
             }
-        } else {
-            System.out.println("Path: " + url.getPath());
-            if (url.getPath().contains("/add")) {
-                String[] parameters = url.getQuery().split("=");
-                if (parameters[0].equals("s")) {
-                    strArray.add(parameters[1]);
-                    return String.format("Search history updated! " + parameters[1]
-                            + " was added. Seach history is now: " + strArray.toString());
-                }
+        } else if (url.getPath().contains("/add")) {
+            String[] parameters = url.getQuery().split("=");
+            if (parameters[0].equals("s")) {
+                strArray.add(parameters[1]);
+                return String.format("Search history updated! " + parameters[1]
+                        + " was added. Seach history is now: " + strArray.toString());
             }
+
         }
         return "404 Not Found!";
 
